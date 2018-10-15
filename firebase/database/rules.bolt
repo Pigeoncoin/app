@@ -1,0 +1,56 @@
+/// messages
+
+path /!/{shout_id}/{message_id} is Message {
+  read() { isSignedIn() }
+  write() { isSignedIn() }
+}
+
+path /tag/{tag_id}/{message_id} is Message {
+  read() { isSignedIn() }
+  write() { isSignedIn() }
+}
+
+path /@/{uid}/{message_id} is Message {
+  read() { isCurrentUser(uid) }
+  write() { isSignedIn() }
+}
+
+type Message extends Timestamped{
+  uid: String;
+  msg: String;
+
+  read() { isCurrentUser(this.uid) }
+  validate() { isCurrentUser(this.uid) }
+}
+
+
+/// users
+
+path /users/{uid} is User{
+  read() { isCurrentUser(uid) }
+  write() { isCurrentUser(uid) }
+}
+
+type User {
+  name: String;
+  avatar: Url;
+}
+
+
+/// types
+
+type Url {
+  validate() { this.test(/^http/) }
+}
+
+type Timestamped {
+  tc: Number;
+  tm: Number;
+}
+
+
+/// helper functions
+
+isSignedIn() { auth.uid != null }
+isCurrentUser(uid) { isSignedIn() && uid == auth.uid }
+// isCloudFunctions() { uid == "cloud-functions" }
