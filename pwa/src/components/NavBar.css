@@ -1,0 +1,23 @@
+#NavBar {
+  /* flex */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* position */
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 48px;
+  /* etc */
+  background-color: #fff;
+  border-top: 0.5px solid #ddd;
+}
+
+#NavBar>* {
+  margin: 0px 18px;
+}
+
+#NavBar>span {
+  font-size: 18px;
+  font-weight: 600;
+}

@@ -1,0 +1,23 @@
+#AppBar {
+  /* flex */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* position */
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 48px;
+  /* etc */
+  background-color: #fff;
+  border-bottom: 0.5px solid #ddd;
+}
+
+#AppBar>* {
+  margin: 0px 18px;
+}
+
+#AppBar>span {
+  font-size: 18px;
+  font-weight: 600;
+}
