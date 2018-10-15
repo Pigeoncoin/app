@@ -1,0 +1,2 @@
+(cd pwa && npm run build)
+(cd firebase && firebase deploy)
