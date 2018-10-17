@@ -8,11 +8,14 @@ export interface Props {
   title: string;
   child?: React.ReactNode;
   back?: boolean;
+  transparent?: boolean;
 }
 
-function AppBar({ title, child, back }: Props) {
+function AppBar({ title, child, back, transparent }: Props) {
+  const className = transparent ? "transparent" : undefined;
+
   return (
-    <div id="AppBar">
+    <div id="AppBar" className={className}>
       {back ? (
         <Icon selector="chevron-left" />
       ) : (

@@ -14,11 +14,18 @@
   border-bottom: 0.5px solid #ddd;
 }
 
-/* #AppBar>* {
-  margin: 0px 18px;
-} */
-
 #AppBar>span {
   font-size: 18px;
   font-weight: 600;
+}
+
+/* transparent */
+
+#AppBar.transparent {
+  background-color: transparent;
+  border: none;
+}
+
+#AppBar.transparent>span {
+  color: transparent;
 }
