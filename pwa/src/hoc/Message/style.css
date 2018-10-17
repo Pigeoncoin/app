@@ -1,0 +1,37 @@
+.Message {
+  display: flex;
+  flex-direction: row;
+  margin: 12px 6px;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.Message>.column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+}
+
+.Message>.column>.row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+/* items */
+
+.Message>.column>.row>.name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.Message>.column>.row>.time {
+  font-size: 12px;
+  font-weight: 400;
+  color: #555;
+}
+
+.Message>.column>.text {
+  font-size: 14px;
+}
