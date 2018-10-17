@@ -4,7 +4,6 @@ import AppBar from "../hoc/AppBar";
 import NavBar from "../hoc/NavBar";
 
 import SafeArea from "../components/SafeArea";
-import Avatar from "../components/Avatar";
 import TextInput from "../components/TextInput";
 
 export interface Props {}
@@ -19,7 +18,7 @@ function HomeScreen({  }: Props) {
         trailing="rocket"
       />
       <SafeArea>
-        <Avatar src="https://randomuser.me/api/portraits/men/72.jpg" />
+        <br />
       </SafeArea>
       <NavBar />
     </div>
