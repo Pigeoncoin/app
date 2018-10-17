@@ -12,7 +12,7 @@ export interface Props {}
 function HomeScreen({  }: Props) {
   return (
     <div>
-      <AppBar title="Feed" child={<TextInput width={200} />} />
+      <AppBar title="Feed" child={<TextInput width={180} />} />
       <div style={{ marginTop: 48 + 8 }}>
         <Avatar src="https://randomuser.me/api/portraits/men/72.jpg" />
       </div>

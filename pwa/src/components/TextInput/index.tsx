@@ -15,7 +15,7 @@ class TextInput extends React.Component<Props, State> {
   }
 
   render() {
-    const { width = 500, placeholder = "Search" } = this.props;
+    const { width = 180, placeholder = "Search" } = this.props;
 
     return (
       <div className="TextInput" style={{ width }}>
