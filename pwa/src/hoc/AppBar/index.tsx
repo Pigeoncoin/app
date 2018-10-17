@@ -7,11 +7,12 @@ import "./style.css";
 export interface Props {
   title: string;
   child?: React.ReactNode;
+  trailing: string;
   back?: boolean;
   transparent?: boolean;
 }
 
-function AppBar({ title, child, back, transparent }: Props) {
+function AppBar({ title, child, back, transparent, trailing }: Props) {
   const className = transparent ? "transparent" : undefined;
 
   return (
@@ -25,7 +26,7 @@ function AppBar({ title, child, back, transparent }: Props) {
         />
       )}
       {child || <span>{title}</span>}
-      <Icon selector="rocket" />
+      <Icon selector={trailing} />
     </div>
   );
 }

@@ -10,7 +10,7 @@ export interface Props {}
 function UserScreen({  }: Props) {
   return (
     <div>
-      <AppBar transparent back title="Settings" />
+      <AppBar transparent back title="Settings" trailing="cog" />
       <UserSummary />
       <Message
         avatarUrl="https://randomuser.me/api/portraits/men/31.jpg"
