@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./style.css";
 
 export interface Props {
   selector: string;
@@ -6,15 +7,10 @@ export interface Props {
 
 function Icon({ selector }: Props) {
   return (
-    <svg className={`lnr lnr-${selector}`} style={style}>
+    <svg className={`lnr lnr-${selector}`}>
       <use xlinkHref={`#lnr-${selector}`} />
     </svg>
   );
 }
-
-const style: React.CSSProperties = {
-  height: 24,
-  width: 24
-};
 
 export default Icon;

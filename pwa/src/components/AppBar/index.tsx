@@ -1,7 +1,7 @@
 import * as React from "react";
-import Icon from "./Icon";
+import Icon from "../Icon";
 
-import "./AppBar.css";
+import "./style.css";
 
 export interface Props {
   title: string;

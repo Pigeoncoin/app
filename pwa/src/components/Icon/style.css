@@ -1,0 +1,11 @@
+.lnr {
+  height: 24px;
+  width: 24px;
+  /* animation */
+  transition: 300ms;
+  fill: #666;
+}
+
+.lnr:hover {
+  fill: cornflowerblue;
+}
