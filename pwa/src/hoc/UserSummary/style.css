@@ -1,0 +1,19 @@
+.UserSummary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.UserSummary>.Avatar {
+  margin-top: 18px;
+}
+
+.UserSummary>.title {
+  margin: 12px;
+  font-size: 22px;
+}
+
+.UserSummary>.stats {
+  display: flex;
+  flex-direction: row;
+}
