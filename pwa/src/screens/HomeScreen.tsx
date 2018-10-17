@@ -1,7 +1,9 @@
 import * as React from "react";
 
-import AppBar from "../components/AppBar";
-import NavBar from "../components/NavBar";
+import AppBar from "../hoc/AppBar";
+import NavBar from "../hoc/NavBar";
+
+import Avatar from "../components/Avatar";
 
 import TextInput from "../components/TextInput";
 
@@ -10,9 +12,9 @@ export interface Props {}
 function HomeScreen({  }: Props) {
   return (
     <div>
-      <AppBar title="Feed" />
+      <AppBar title="Feed" child={<TextInput width={200} />} />
       <div style={{ marginTop: 48 + 8 }}>
-        <TextInput width={200} />
+        <Avatar src="https://randomuser.me/api/portraits/men/72.jpg" />
       </div>
       <NavBar />
     </div>
