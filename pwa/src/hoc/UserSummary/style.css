@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.UserSummary>.Avatar {
-  margin-top: 18px;
+  /* background */
+  background-size: cover;
+  padding: 18px;
+  border-bottom: 0.5px solid #ddd;
 }
 
 .UserSummary>.title {
@@ -14,6 +14,7 @@
 }
 
 .UserSummary>.stats {
+  padding: 12px;
   display: flex;
   flex-direction: row;
 }

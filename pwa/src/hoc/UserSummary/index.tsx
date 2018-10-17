@@ -7,8 +7,24 @@ import Stat from "../../components/Stat";
 export interface Props {}
 
 function UserSummary({  }: Props) {
+  const backgroundUrl =
+    "https://blog.oxforddictionaries.com/wp-content/uploads/mountain-names.jpg";
+
+  const backgroundImage = `
+    linear-gradient(
+      rgba(255, 255, 255, 0.8), 
+      rgba(255, 255, 255, 1.0)
+    ),
+    url(${backgroundUrl})
+  `;
+
   return (
-    <div className="UserSummary">
+    <div
+      className="UserSummary"
+      style={{
+        backgroundImage
+      }}
+    >
       <Avatar
         radius={48}
         src="https://randomuser.me/api/portraits/men/72.jpg"

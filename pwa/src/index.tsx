@@ -4,9 +4,7 @@ import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 
 // import HomeScreen from './screens/HomeScreen';
-import SettingsScreen from "./screens/SettingsScreen";
+import UserScreen from "./screens/UserScreen";
 
-ReactDOM.render(<SettingsScreen />, document.getElementById(
-  "root"
-) as HTMLElement);
+ReactDOM.render(<UserScreen />, document.getElementById("root") as HTMLElement);
 registerServiceWorker();

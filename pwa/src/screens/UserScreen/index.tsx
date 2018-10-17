@@ -7,7 +7,7 @@ import SafeArea from "../../components/SafeArea";
 
 export interface Props {}
 
-function SettingsScreen({  }: Props) {
+function UserScreen({  }: Props) {
   return (
     <div>
       <AppBar back title="Settings" />
@@ -18,4 +18,4 @@ function SettingsScreen({  }: Props) {
   );
 }
 
-export default SettingsScreen;
+export default UserScreen;
