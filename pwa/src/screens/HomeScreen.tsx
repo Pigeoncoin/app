@@ -13,6 +13,7 @@ function HomeScreen({  }: Props) {
   return (
     <div>
       <AppBar
+        leadingRoute="/user"
         title="Feed"
         child={<TextInput width={180} />}
         trailing="rocket"

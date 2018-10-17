@@ -1,10 +1,13 @@
 import * as React from "react";
+import { NavLink } from "react-router-dom";
+
 import Icon from "../../components/Icon";
 import Avatar from "../../components/Avatar";
 
 import "./style.css";
 
 export interface Props {
+  leadingRoute?: string;
   title: string;
   child?: React.ReactNode;
   trailing: string;
@@ -12,19 +15,29 @@ export interface Props {
   transparent?: boolean;
 }
 
-function AppBar({ title, child, back, transparent, trailing }: Props) {
+function AppBar({
+  leadingRoute = "/home",
+  title,
+  child,
+  back,
+  transparent,
+  trailing
+}: Props) {
   const className = transparent ? "transparent" : undefined;
 
   return (
     <div id="AppBar" className={className}>
-      {back ? (
-        <Icon selector="chevron-left" />
-      ) : (
-        <Avatar
-          radius={18}
-          src="https://randomuser.me/api/portraits/men/72.jpg"
-        />
-      )}
+      <NavLink to={leadingRoute}>
+        {back ? (
+          <Icon selector="chevron-left" />
+        ) : (
+          <Avatar
+            radius={18}
+            src="https://randomuser.me/api/portraits/men/72.jpg"
+          />
+        )}
+      </NavLink>
+
       {child || <span>{title}</span>}
       <Icon selector={trailing} />
     </div>
