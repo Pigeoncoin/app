@@ -3,11 +3,12 @@ import "./style.css";
 
 export interface Props {
   selector: string;
+  style?: React.CSSProperties;
 }
 
-function Icon({ selector }: Props) {
+function Icon({ selector, style }: Props) {
   return (
-    <svg className={`lnr lnr-${selector}`}>
+    <svg style={style} className={`lnr lnr-${selector}`}>
       <use xlinkHref={`#lnr-${selector}`} />
     </svg>
   );
