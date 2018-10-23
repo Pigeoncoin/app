@@ -44,6 +44,7 @@ class ActionField extends React.Component<Props, State> {
       if (!!textInput.value) {
         this._submit(textInput.value);
         textInput.value = "";
+        textInput.focus();
       }
     }
   };
