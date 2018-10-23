@@ -19,20 +19,19 @@ class ActionField extends React.Component<Props, State> {
     this.state = {};
   }
 
-  _handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = ev.currentTarget;
-    const { onNewTag } = this.props;
-
-    const foundTag = value.match(/^#[a-zA-Z]*\s/);
-    if (foundTag) {
-      const newTag = foundTag[0].trim().replace("#", "");
-      ev.currentTarget.value = "";
-      onNewTag(newTag);
-    }
-  };
-
   _handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    if (ev.key === "Enter") {
+    const { value } = ev.currentTarget;
+
+    if (ev.key === "Tab" || ev.key === " " || ev.key === "Enter") {
+      const foundTag = value.match(/^#[a-zA-Z]+/);
+
+      if (!!foundTag) {
+        const newTag = foundTag[0].trim().replace("#", "");
+        ev.currentTarget.value = "";
+        this.props.onNewTag(newTag);
+        ev.preventDefault();
+      }
+    } else if (ev.key === "Enter") {
       this._submit(ev.currentTarget.value);
       ev.currentTarget.value = "";
     }
@@ -65,7 +64,7 @@ class ActionField extends React.Component<Props, State> {
           style={styles.input}
           placeholder="What do you think?"
           type="text"
-          onChange={this._handleChange}
+          // onChange={this._handleChange}
           onKeyDown={this._handleKeyDown}
         />
         <div onClick={this._handleClick}>
