@@ -5,6 +5,7 @@ import Icon from "../../components/Icon";
 
 export interface Props {
   onNewTag: (tag: string) => void;
+  onSubmit: (message: string) => void;
   tag: string;
 }
 
@@ -22,11 +23,20 @@ class ActionField extends React.Component<Props, State> {
 
     const foundTag = value.match(/^#[a-zA-Z]*\s/);
     if (foundTag) {
-      const newTag = foundTag[0];
+      const newTag = foundTag[0].trim().replace("#", "");
       ev.currentTarget.value = "";
       onNewTag(newTag);
     }
   };
+
+  _handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    if (ev.key === "Enter") {
+      this._submit(ev.currentTarget.value);
+      ev.currentTarget.value = "";
+    }
+  };
+
+  _submit = (message: string) => this.props.onSubmit(message);
 
   render() {
     const { tag } = this.props;
@@ -36,13 +46,14 @@ class ActionField extends React.Component<Props, State> {
       <div style={styles.container}>
         <Icon style={styles.icon} selector="paperclip" />
         <div style={styles.tag}>
-          <span>{tag}</span>
+          <span>{`#${tag}`}</span>
         </div>
         <input
           style={styles.input}
           placeholder="What do you think?"
           type="text"
           onChange={this._handleChange}
+          onKeyDown={this._handleKeyDown}
         />
         <Icon style={{ ...styles.icon, marginRight: 12 }} selector="rocket" />
       </div>

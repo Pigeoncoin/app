@@ -1,56 +1,40 @@
-/// messages
-
-path /!/{shout_id}/{message_id} is Message {
-  read() { isSignedIn() }
-  write() { isSignedIn() }
+path /tags/{tag_id} {
+  read() { isPublic() }
+  
+  path /{message_id} is TagMessage {
+    write() { isCurrentUser(this.uid) && tag_id == this.tag }
+  }
 }
 
-path /tag/{tag_id}/{message_id} is Message {
-  read() { isSignedIn() }
-  write() { isSignedIn() }
-}
-
-path /@/{uid}/{message_id} is Message {
-  read() { isCurrentUser(uid) }
-  write() { isSignedIn() }
-}
-
-type Message extends Timestamped{
+type TagMessage {
+  tag: String;
   uid: String;
   msg: String;
-
-  read() { isCurrentUser(this.uid) }
-  validate() { isCurrentUser(this.uid) }
-}
-
-
-/// users
-
-path /users/{uid} is User{
-  read() { isCurrentUser(uid) }
-  write() { isCurrentUser(uid) }
-}
-
-type User {
-  name: String;
-  avatar: Url;
-}
-
-
-/// types
-
-type Url {
-  validate() { this.test(/^http/) }
-}
-
-type Timestamped {
   tc: Number;
+
+  validate() { this.tc == now }
+}
+
+path /tagsList {
+  read() { isPublic() }
+
+  path /{tag_id} is TagSummary{
+    write() { isCloudFunctions() }
+  }
+}
+
+type TagSummary {
+  count: Number;
+  msg: String;
   tm: Number;
+
+  validate() { this.tm == now }
 }
 
 
 /// helper functions
 
+isPublic() { true }
 isSignedIn() { auth.uid != null }
 isCurrentUser(uid) { isSignedIn() && uid == auth.uid }
-// isCloudFunctions() { uid == "cloud-functions" }
+isCloudFunctions() { false }
