@@ -30,10 +30,10 @@ class ActionField extends React.Component<Props, State> {
         ev.currentTarget.value = "";
         this.props.onNewTag(newTag);
         ev.preventDefault();
+      } else if (ev.key === "Enter") {
+        this._submit(ev.currentTarget.value);
+        ev.currentTarget.value = "";
       }
-    } else if (ev.key === "Enter") {
-      this._submit(ev.currentTarget.value);
-      ev.currentTarget.value = "";
     }
   };
 
