@@ -26,7 +26,6 @@ class ActionField extends React.Component<Props, State> {
       ev.currentTarget.value = "";
       onNewTag(newTag);
     }
-    console.log("value", value);
   };
 
   render() {

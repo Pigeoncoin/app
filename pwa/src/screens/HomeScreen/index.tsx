@@ -19,8 +19,15 @@ class HomeScreen extends React.Component<Props, State> {
 
   _onNewTag = (tag: string) => {
     this.setState({ tag });
-    console.log("HomeScreen._onNewTag()", tag);
+    localStorage.setItem("tag", tag);
   };
+
+  componentDidMount() {
+    const storedTag = localStorage.getItem("tag");
+    if (!!storedTag) {
+      this.setState({ tag: storedTag });
+    }
+  }
 
   render() {
     const { tag } = this.state;
