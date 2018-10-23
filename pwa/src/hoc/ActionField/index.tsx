@@ -12,6 +12,8 @@ export interface Props {
 interface State {}
 
 class ActionField extends React.Component<Props, State> {
+  private _ref = React.createRef<HTMLInputElement>();
+
   constructor(props: Props) {
     super(props);
     this.state = {};
@@ -36,6 +38,16 @@ class ActionField extends React.Component<Props, State> {
     }
   };
 
+  _handleClick = (ev: React.MouseEvent<HTMLDivElement>) => {
+    const textInput = this._ref.current;
+    if (!!textInput) {
+      if (!!textInput.value) {
+        this._submit(textInput.value);
+        textInput.value = "";
+      }
+    }
+  };
+
   _submit = (message: string) => this.props.onSubmit(message);
 
   render() {
@@ -44,18 +56,20 @@ class ActionField extends React.Component<Props, State> {
 
     return (
       <div style={styles.container}>
-        <Icon style={styles.icon} selector="paperclip" />
         <div style={styles.tag}>
           <span>{`#${tag}`}</span>
         </div>
         <input
+          ref={this._ref}
           style={styles.input}
           placeholder="What do you think?"
           type="text"
           onChange={this._handleChange}
           onKeyDown={this._handleKeyDown}
         />
-        <Icon style={{ ...styles.icon, marginRight: 12 }} selector="rocket" />
+        <div onClick={this._handleClick}>
+          <Icon style={{ ...styles.icon, marginRight: 12 }} selector="rocket" />
+        </div>
       </div>
     );
   }
