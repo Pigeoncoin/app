@@ -9,7 +9,7 @@ import ActionField from "../../hoc/ActionField";
 import SafeArea from "../../components/SafeArea";
 
 import TagMessagesBuilder from "../../builders/TagMessagesBuilder";
-import { TagMessage } from "../../builders/TagMessagesBuilder/types";
+import { TagMessage } from "../../types";
 import TagMessageItem from "../../hoc/TagMessage";
 
 export interface Props {}
@@ -71,7 +71,7 @@ class HomeScreen extends React.Component<Props, State> {
         <AppBar leadingRoute="/user" title={`#${tag}`} trailing="rocket" />{" "}
         <SafeArea>
           <TagMessagesBuilder key={tag} tag={tag}>
-            {m => <TagMessageItem m={m} />}
+            {m => <TagMessageItem key={m.tc} m={m} />}
           </TagMessagesBuilder>
         </SafeArea>
         <ActionField

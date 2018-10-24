@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TagMessage } from "../../builders/TagMessagesBuilder/types";
+import { TagMessage } from "../../types";
 
 import { distanceInWordsToNow as formatDate } from "date-fns";
 

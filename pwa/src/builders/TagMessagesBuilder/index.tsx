@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TagMessage } from "./types";
+import { TagMessage } from "../../types";
 
 import * as firebase from "firebase/app";
 import "firebase/database";
@@ -29,7 +29,7 @@ class TagMessagesBuilder extends React.Component<Props, State> {
 
         if (!!snaps) {
           snaps.forEach(snap => {
-            const message = { ...snap.val(), key: snap.key };
+            const message: TagMessage = snap.val();
             messages.push(message);
           });
 
