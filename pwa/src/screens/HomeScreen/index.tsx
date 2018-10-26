@@ -78,7 +78,12 @@ class HomeScreen extends React.Component<Props, State> {
 
     return (
       <div>
-        <AppBar leadingRoute="/user" title={`#${tag}`} trailing="rocket" />{" "}
+        <AppBar
+          leadingRoute="/user"
+          title={`#${tag}`}
+          trailing="rocket"
+          trailingRoute="/tags"
+        />
         <SafeArea>
           <div>
             <TagMessagesBuilder

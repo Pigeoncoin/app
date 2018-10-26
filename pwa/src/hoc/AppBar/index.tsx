@@ -10,7 +10,8 @@ export interface Props {
   leadingRoute?: string;
   title: string;
   child?: React.ReactNode;
-  trailing: string;
+  trailing?: string;
+  trailingRoute?: string;
   back?: boolean;
   transparent?: boolean;
 }
@@ -21,7 +22,8 @@ function AppBar({
   child,
   back,
   transparent,
-  trailing
+  trailing,
+  trailingRoute
 }: Props) {
   const className = transparent ? "transparent" : undefined;
 
@@ -39,7 +41,14 @@ function AppBar({
       </NavLink>
 
       {child || <span>{title}</span>}
-      <Icon selector={trailing} />
+
+      {!!trailingRoute && !!trailing ? (
+        <NavLink to={trailingRoute}>
+          <Icon selector={trailing} />
+        </NavLink>
+      ) : (
+        <Icon selector="null" />
+      )}
     </div>
   );
 }

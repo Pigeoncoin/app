@@ -6,6 +6,8 @@ export type TagMessage = {
 };
 
 export type TagSummary = {
+  tag?: string;
+
   count: number;
   msg: string;
   tm: number;

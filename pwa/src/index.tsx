@@ -9,13 +9,16 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import HomeScreen from "./screens/HomeScreen";
 import UserScreen from "./screens/UserScreen";
+import TagListScreen from "./screens/TagListScreen";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route exact path="/home" component={HomeScreen} />
       <Route exact path="/user" component={UserScreen} />
-      <Redirect to="/home" />
+      <Route exact path="/tags" component={TagListScreen} />
+      <Route exact path="/tag/:tag" component={HomeScreen} />
+      <Redirect to="/" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root") as HTMLElement
