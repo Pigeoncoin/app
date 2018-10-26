@@ -14,7 +14,7 @@ import TagListScreen from "./screens/TagListScreen";
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route exact path="/home" component={HomeScreen} />
+      <Route exact path="/" component={HomeScreen} />
       <Route exact path="/user" component={UserScreen} />
       <Route exact path="/tags" component={TagListScreen} />
       <Route exact path="/tag/:tag" component={HomeScreen} />
