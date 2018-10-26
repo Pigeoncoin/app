@@ -20,6 +20,8 @@ interface State {
 }
 
 class HomeScreen extends React.Component<Props, State> {
+  private _ref = React.createRef<HTMLDivElement>();
+
   constructor(props: Props) {
     super(props);
     this.state = { tag: "welcome", auth: null };
@@ -40,6 +42,7 @@ class HomeScreen extends React.Component<Props, State> {
       console.log("logged in as ", user.uid);
     }
   }
+
   _onNewTag = (tag: string) => {
     this.setState({ tag });
     localStorage.setItem("tag", tag);
@@ -63,6 +66,13 @@ class HomeScreen extends React.Component<Props, State> {
     }
   };
 
+  _onMessage = () => {
+    const div = this._ref.current;
+    if (!!div) {
+      div.scrollIntoView();
+    }
+  };
+
   render() {
     const { tag } = this.state;
 
@@ -70,9 +80,12 @@ class HomeScreen extends React.Component<Props, State> {
       <div>
         <AppBar leadingRoute="/user" title={`#${tag}`} trailing="rocket" />{" "}
         <SafeArea>
-          <TagMessagesBuilder key={tag} tag={tag}>
-            {m => <TagMessageItem key={m.tc} m={m} />}
-          </TagMessagesBuilder>
+          <div>
+            <TagMessagesBuilder key={tag} tag={tag} onMessage={this._onMessage}>
+              {m => <TagMessageItem key={m.tc} m={m} />}
+            </TagMessagesBuilder>
+            <div ref={this._ref} />
+          </div>
         </SafeArea>
         <ActionField
           tag={tag}

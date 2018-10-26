@@ -6,6 +6,7 @@ import "firebase/database";
 
 export interface Props {
   tag: string;
+  onMessage: () => void;
   children: (m: TagMessage) => React.ReactNode;
 }
 
@@ -35,6 +36,8 @@ class TagMessagesBuilder extends React.Component<Props, State> {
 
           this.setState({ messages });
         }
+
+        this.props.onMessage();
       });
   }
 
