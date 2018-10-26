@@ -41,6 +41,10 @@ class TagMessagesBuilder extends React.Component<Props, State> {
       });
   }
 
+  componentDidUpdate() {
+    this.props.onMessage();
+  }
+
   render() {
     const { children } = this.props;
     const { messages } = this.state;

@@ -66,7 +66,7 @@ class HomeScreen extends React.Component<Props, State> {
     }
   };
 
-  _onMessage = () => {
+  _scrollToBottom = () => {
     const div = this._ref.current;
     if (!!div) {
       div.scrollIntoView();
@@ -81,7 +81,11 @@ class HomeScreen extends React.Component<Props, State> {
         <AppBar leadingRoute="/user" title={`#${tag}`} trailing="rocket" />{" "}
         <SafeArea>
           <div>
-            <TagMessagesBuilder key={tag} tag={tag} onMessage={this._onMessage}>
+            <TagMessagesBuilder
+              key={tag}
+              tag={tag}
+              onMessage={this._scrollToBottom}
+            >
               {m => <TagMessageItem key={m.tc} m={m} />}
             </TagMessagesBuilder>
             <div ref={this._ref} />
